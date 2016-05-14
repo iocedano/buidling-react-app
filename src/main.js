@@ -1,4 +1,9 @@
 $ = jQuery = require('jquery');
-var App = console.error('Fuck you World');
+var ReactDom = require('react-dom');
+var React = require('react');
 
-module.exports = App;
+var Home = require('./components/pages/home');
+var About = require('./components/pages/about');
+
+
+ReactDom.render(<Home />, document.getElementById('app'));
