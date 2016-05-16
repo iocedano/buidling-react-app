@@ -4,6 +4,33 @@ var React = require('react');
 
 var Home = require('./components/pages/home');
 var About = require('./components/pages/about');
+var Header = require('./components/common/header');
 
+var App = React.createClass({
+  render: function() {
+    var route = this.props.route || '';
+    var Child;
+    switch (route) {
+      case "about":
+        Child = About;
+        break;
+      default:
+        Child = Home;
+    }
 
-ReactDom.render(<Home />, document.getElementById('app'));
+    return (
+      <div>
+        <Header />
+        <Child />
+      </div>
+    );
+  }
+});
+
+function render() {
+  var route = window.location.hash.substr(1);
+  ReactDom.render(<App route={route} />, document.getElementById('app'));
+}
+
+window.addEventListener('hashchange', render);
+render();
