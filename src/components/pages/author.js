@@ -2,6 +2,7 @@
 
 var React = require('react');
 var AuthorApi = require('../../api/authorApi');
+var AuthorList = require('../common/authorList');
 
 var Author = React.createClass({
   getInitialState: function() {
@@ -9,33 +10,17 @@ var Author = React.createClass({
       authors: []
     }
   },
-  componentWillMount: function() {
+  componentDidMount: function() {
     // Ajax to get the datas
-    this.setState({ authors: AuthorApi.getAllAuthors() });
-  },
-  _renderAuthor: function(author) {
-    return (
-      <tr key={author.id}>
-        <td><a href={"/#author/" + author.id}>{author.id}</a></td>
-        <td>{author.firstName} {author.lastName}</td>
-      </tr>
-    )
+    if (this.isMounted()) {
+      this.setState({ authors: AuthorApi.getAllAuthors() });
+    }
   },
   render: function() {
-    var authors = this.state.authors.map(this._renderAuthor);
-
     return (
       <div>
         <h1>Authors</h1>
-        <table className="table">
-          <thead>
-            <th>ID</th>
-            <th>Name</th>
-          </thead>
-          <tbody>
-            {authors}
-          </tbody>
-        </table>
+        <AuthorList authors={this.state.authors} />
       </div>
     );
   }
