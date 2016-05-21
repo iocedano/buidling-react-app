@@ -1,6 +1,8 @@
 {
-  "ecmaFeatures": {
-    "jsx": true
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "env": {
     "browser": true,
@@ -17,10 +19,20 @@
     "no-lone-blocks": 0,
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-eval": 2,
-    "no-empty-function": 1
+    "no-empty-function": 1,
+    "jsx-quotes": [2, "prefer-double"],
+    "react/jsx-boolean-value": [2, "always"],
+    "react/jsx-closing-bracket-location": [2, {"selfClosing": "after-props", "nonEmpty": "after-props"}],
+    "react/jsx-curly-spacing": [2, "never", {"allowMultiline": false}], 
+    "react/sort-prop-types": 2,
+    "react/self-closing-comp": 2,
+    "react/sort-comp": 2
   },
   "globals": {
     "jQuery": true,
     "$": true
-  }
+  },
+  "plugins": [
+    "react"
+  ]
 }

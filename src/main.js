@@ -1,4 +1,13 @@
 $ = jQuery = require('jquery');
-var App = console.error('Fuck you World');
+var ReactDom = require('react-dom');
+var React = require('react');
 
-module.exports = App;
+var App = require('./components/app');
+
+function render() {
+  var route = window.location.hash.substr(1);
+  ReactDom.render(<App route={route} />, document.getElementById('app'));
+}
+
+window.addEventListener('hashchange', render);
+render();
