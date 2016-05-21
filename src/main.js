@@ -2,34 +2,7 @@ $ = jQuery = require('jquery');
 var ReactDom = require('react-dom');
 var React = require('react');
 
-var Home = require('./components/pages/home');
-var About = require('./components/pages/about');
-var Author = require('./components/pages/author');
-var Header = require('./components/common/header');
-
-var App = React.createClass({
-  render: function() {
-    var route = this.props.route || '';
-    var Child;
-    switch (route) {
-      case "about":
-        Child = About;
-        break;
-      case "author":
-        Child = Author;
-        break;
-      default:
-        Child = Home;
-    }
-
-    return (
-      <div>
-        <Header />
-        <Child />
-      </div>
-    );
-  }
-});
+var App = require('./components/app');
 
 function render() {
   var route = window.location.hash.substr(1);
