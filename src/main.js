@@ -1,13 +1,19 @@
-$ = jQuery = require('jquery');
-var ReactDom = require('react-dom');
-var React = require('react');
+// $ = jQuery = require('jquery');
+import ReactDom from 'react-dom';
+import React, { component } from 'react';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
-var App = require('./components/app');
+import App from './components/app';
+const Home = require('./components/pages/home');
+const Author = require('./components/pages/author');
+const About = require('./components/pages/about');
 
-function render() {
-  var route = window.location.hash.substr(1);
-  ReactDom.render(<App route={route} />, document.getElementById('app'));
-}
-
-window.addEventListener('hashchange', render);
-render();
+ReactDom.render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Home} />
+      <Route path="author" component={Author} />
+      <Route path="about" component={About} />
+    </Route>
+  </Router>
+), document.getElementById('app'));

@@ -1,9 +1,12 @@
 'use strict';
 
-var React = require('react');
+import React from 'react';
+import { Link } from 'react-router';
 
-var Header = React.createClass({
-  render: function() {
+const ACTIVE = { color: 'red' };
+
+class Header  extends React.Component {
+  render() {
     return (
       <header>
         <nav className="navbar navbar-default">
@@ -15,14 +18,13 @@ var Header = React.createClass({
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">Brand</a>
+              <Link className="navbar-brand" to="/">Brand</Link>
             </div>
 
             <div className="collapse navbar-collapse" id="navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#author">Author</a></li>
+                <li><Link to="/author" activeStyle={ACTIVE}>Author</Link></li>
+                <li><Link to="/about" activeStyle={ACTIVE}>About</Link></li>
               </ul>
             </div>
           </div>
@@ -30,6 +32,6 @@ var Header = React.createClass({
       </header>
     )
   }
-});
+}
 
-module.exports = Header;
+export default Header;
