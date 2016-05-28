@@ -4,7 +4,6 @@ const gulp = require('gulp');
 const gulpConnect = require('gulp-connect'); //Run a local dev server
 const gulpOpen = require('gulp-open'); // Open URL in web browser
 const browserify = require('browserify');
-// const reactify = require('reactify');
 const source = require('vinyl-source-stream');
 const concat = require('gulp-concat');
 const eslint = require('gulp-eslint');
@@ -50,7 +49,7 @@ gulp.task('html', function() {
 
 gulp.task('js', function() {
   browserify(config.paths.mainJs)
-    .transform('babelify', {presets: ["es2015", "react"]})
+    .transform(babelify, {presets: ["es2015", "react"]})
     .bundle()
     .on('error', console.error.bind(console))
     .pipe(source('bunlde.js'))

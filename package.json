@@ -27,7 +27,6 @@
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-router": "^2.4.0",
-    "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0"
   }
 }

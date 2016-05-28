@@ -2,22 +2,30 @@
 
 // var React = require('react');
 import React from 'react';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-
-const App = require('./components/app');
+import App from './components/app';
+import NotFoundPage from './components/pages/404'
 const Home = require('./components/pages/home');
 const Author = require('./components/pages/author');
 const About = require('./components/pages/about');
 
+const routes = {
+  path: '/',
+  component: App,
+  indexRoute: { component: Home },
+  childRoutes: [
+    {
+      path: 'about',
+      component: About,
+      onEnter: About.onEnter,
+      onLeave: About.onLeave
+     },
+    {
+      path: 'author',
+      component: Author },
+    {
+      path: '*',
+      component: NotFoundPage }
+  ]
+}
 
-const Routers = (
-<Router history={browserHistory}>
-  <Route path="/" component={App}>
-    <IndexRoute component={Home} />
-    <Route path="author" component={Author} />
-    <Route path="about" component={About} />
-  </Route>
-</Router>
-);
-
-export default Routers;
+export default routes;
