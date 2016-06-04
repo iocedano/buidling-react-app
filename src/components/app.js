@@ -1,34 +1,20 @@
 'use strict';
 
-var React = require('react');
+import React from 'react';
+import Header from './common/header';
 
-var Home = require('./pages/home');
-var About = require('./pages/about');
-var Author = require('./pages/author');
-var Header = require('./common/header');
-
-var App = React.createClass({
-  render: function() {
-    var route = this.props.route || '';
-    var Child;
-    switch (route) {
-      case "about":
-        Child = About;
-        break;
-      case "author":
-        Child = Author;
-        break;
-      default:
-        Child = Home;
-    }
-
+class App extends React.Component {
+  render() {
     return (
       <div>
         <Header />
-        <Child />
+        <div>
+          {this.props.children}
+        </div>
       </div>
     );
   }
-});
+}
 
-module.exports = App;
+
+export default App;

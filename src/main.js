@@ -1,13 +1,10 @@
-$ = jQuery = require('jquery');
-var ReactDom = require('react-dom');
-var React = require('react');
 
-var App = require('./components/app');
+import ReactDom from 'react-dom';
+import React, { component } from 'react';
+import { Router, browserHistory } from 'react-router';
 
-function render() {
-  var route = window.location.hash.substr(1);
-  ReactDom.render(<App route={route} />, document.getElementById('app'));
-}
+import jQuery from 'jquery';
+const $ = jQuery;
+import routes from './routes';
 
-window.addEventListener('hashchange', render);
-render();
+ReactDom.render((<Router history={browserHistory} routes={routes} />), document.getElementById('app'));
