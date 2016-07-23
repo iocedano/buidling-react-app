@@ -3,6 +3,7 @@
 var React = require('react');
 var AuthorApi = require('../../api/authorApi');
 var AuthorList = require('../common/authorList');
+import { Link } from 'react-router';
 
 var Author = React.createClass({
   getInitialState: function() {
@@ -20,6 +21,7 @@ var Author = React.createClass({
     return (
       <div>
         <h1>Authors</h1>
+        <Link to="/addAuthor" className="btn btn-default">Add Author</Link>
         <AuthorList authors={this.state.authors} />
       </div>
     );

@@ -7,6 +7,7 @@ import NotFoundPage from './components/pages/404'
 const Home = require('./components/pages/home');
 const Author = require('./components/pages/author');
 const About = require('./components/pages/about');
+const ManageAuthor = require('./components/pages/manageAuthor.js');
 
 const routes = {
   path: '/',
@@ -22,6 +23,9 @@ const routes = {
     {
       path: 'author',
       component: Author },
+    {
+      path: 'addAuthor',
+      component: ManageAuthor },
     {
       path: '*',
       component: NotFoundPage }
