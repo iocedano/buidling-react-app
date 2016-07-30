@@ -1,0 +1,45 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": ["error", 2],
+        "linebreak-style": ["error", "unix"],
+        "semi": ["error", "always"],
+        "quotes": ["warn", "single"],
+        "no-trailing-spaces": 0,
+        "eol-last": 0,
+        "no-underscore-dangle": 0,
+        "no-alert": 0,
+        "no-lone-blocks": 0,
+        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "no-eval": "error",
+        "no-empty-function": 1,
+        "no-var": "warn",
+        "no-unused-vars": "error",
+        "jsx-quotes": ["error", "prefer-double"],
+        "react/jsx-boolean-value": ["error", "always"],
+        "react/jsx-closing-bracket-location": ["error", {"selfClosing": "after-props", "nonEmpty": "after-props"}],
+        "react/jsx-curly-spacing": ["error", "never", {"allowMultiline": false}],
+        "react/sort-prop-types": "error",
+        "react/self-closing-comp": "error",
+        "react/sort-comp": "error"
+    },
+    "globals": {
+      "jQuery": true,
+      "$": true
+    }
+}

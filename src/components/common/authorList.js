@@ -1,22 +1,18 @@
-'use strict';
+import React from 'react';
 
-var React = require('react');
-
-var AuthorList = React.createClass({
-  propTypes: {
-    authors: React.PropTypes.array.isRequired
-  },
-  _renderAuthor: function(author) {
+class AuthorList extends React.Component {
+  _renderAuthor (author, index) {
     return (
-      <tr key={author.id}>
-        <td><a href={"/#author/" + author.id}>{author.id}</a></td>
+      <tr key={index}>
+        <td><a href={'/#author/' + author.id}>{author.id}</a></td>
         <td>{author.firstName} {author.lastName}</td>
       </tr>
-    )
-  },
-  render: function() {
-    var authors = this.props.authors || [];
-    var authorList = authors.map(this._renderAuthor);
+    );
+  }
+
+  render() {
+    let authors = this.props.authors || [];
+    let authorList = authors.map(this._renderAuthor);
 
     return (
       <table className="table">
@@ -30,6 +26,10 @@ var AuthorList = React.createClass({
       </table>
     );
   }
-});
+}
 
-module.exports = AuthorList;
+AuthorList.propTypes = {
+  authors: React.PropTypes.array.isRequired
+};
+
+export default AuthorList;

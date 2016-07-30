@@ -1,15 +1,14 @@
-'use strict';
-
-var React = require('react');
-var AuthorApi = require('../../api/authorApi');
-var AuthorList = require('../common/authorList');
+import AuthorList from '../common/authorList';
 import { Link } from 'react-router';
 
-var Author = React.createClass({
+let React = require('react');
+let AuthorApi = require('../../api/authorApi');
+
+let Author = React.createClass({
   getInitialState: function() {
     return {
       authors: []
-    }
+    };
   },
   componentDidMount: function() {
     // Ajax to get the datas
