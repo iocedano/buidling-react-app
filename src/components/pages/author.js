@@ -5,17 +5,23 @@ var AuthorApi = require('../../api/authorApi');
 var AuthorList = require('../common/authorList');
 import { Link } from 'react-router';
 
+import AuthorActions from '../../actions/authorActions';
+import AuthorStore from '../../stores/authorStore';
+
 var Author = React.createClass({
   getInitialState: function() {
     return {
-      authors: []
+      authors: AuthorStore.getAllAuthors()
     }
   },
-  componentDidMount: function() {
-    // Ajax to get the datas
-    if (this.isMounted()) {
-      this.setState({ authors: AuthorApi.getAllAuthors() });
-    }
+  componentWillMount: function() {
+    AuthorStore.addChangeListener(this._onChange);
+  },
+  componentWillUnmount: function() {
+    AuthorStore.removeChangeListener(this._onChange);
+  },
+  _onChange: function() {
+    this.setState({author: AuthorStore.getAllAuthors()});
   },
   render: function() {
     return (
